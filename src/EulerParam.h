@@ -11,13 +11,22 @@ class EulerParam {
     ~EulerParam();
 
     // methods:
-    void EPtoDCM();
     f64 operator()(size_t ind) const;
     void renorm();
-    Vector3d EP_dottoOmega(Vector4d EP_dot);
-    Vector4d OmegatoEP_dot(Vector3d omega);
+    void EP_dottoOmega();
+    void OmegatoEP_dot();
+
+    // Conversions:
+    void EPtoDCM();
+    void DCMtoEP(Matrix3d b_C_n_in);
+    void EAtoEP(f64 angles[3], u8 seq[3]);
+    void CRPtoEP();
+    void MRPtoEP();
+    void PRPtoEP(Vector3d lambda, f64 theta);
     // attributes:
     Vector4d EP;
+    Vector4d EP_dot = Vector4d::Zero();
+    Vector3d Omega = Vector3d::Zero();
     Matrix3d b_C_n = Matrix3d::Identity();
 };
 #endif
