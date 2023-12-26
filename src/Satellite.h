@@ -7,11 +7,8 @@
 class Satellite {
 
     // constructor/destructor:
-    Satellite(Vector3d position, Vector3d velocity, Attitude attitude) {
-        this->position = position;
-        this->velocity = velocity;
-        this->attitude = attitude;
-    }
+    Satellite(Vector3d position, Vector3d velocity, Attitude attitude)
+        : position(position), velocity(velocity), attitude(attitude){};
     ~Satellite(){};
     // methods:
 
@@ -22,6 +19,10 @@ class Satellite {
     f64 mass;
     Matrix3d I; // inertia matrix
     f64 area;
+
+    // time histories:
+    std::vector<Vector3d> position_hist;
+    std::vector<Vector3d> velocity_hist;
 };
 
 #endif

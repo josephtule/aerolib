@@ -30,5 +30,9 @@ class Attitude {
     Vector4d EP_dot = Vector4d::Zero();
     Vector3d Omega = Vector3d::Zero();
     Matrix3d b_C_n = Matrix3d::Identity();
+
+    // time histories:
+    std::vector<Vector4d> EP_hist;
+    std::vector<Vector3d> Omega_hist;
 };
 #endif
