@@ -1,23 +1,31 @@
-#include "EulerParam.h"
+#include "Attitude.h"
+
 Matrix3d rot(f64 angle, u8 axis);
 
-EulerParam::EulerParam() {}
+Attitude::Attitude() {}
 
-EulerParam::EulerParam(std::initializer_list<f64> EP_in) {
-    std::copy(EP_in.begin(), EP_in.end(), EP.begin());
+Attitude::Attitude(std::initializer_list<f64> EP_in) {
+    std::copy(EP_in.begin(), EP_in.end(), EP.data());
+    Attitude::renorm();
 }
 
-EulerParam::EulerParam(f64 EP_in[]) {
+Attitude::Attitude(f64 EP_in[]) {
     for (int i = 0; i < 4; i++) {
         EP[i] = EP_in[i];
     }
+    Attitude::renorm();
 }
 
-EulerParam::~EulerParam() {}
+Attitude::Attitude(Vector4d EP) {
+    this->EP = EP;
+    Attitude::renorm();
+}
 
-f64 EulerParam::operator()(size_t ind) const { return EP[ind]; }
+Attitude::~Attitude() {}
 
-void EulerParam::EPtoDCM() {
+f64 Attitude::operator()(size_t ind) const { return EP[ind]; }
+
+void Attitude::EPtoDCM() {
     b_C_n << 1 - 2 * EP[1] * EP[1] - 2 * EP[2] * EP[2],
         2 * (EP[0] * EP[1] + EP[2] * EP[3]),
         2 * (EP[0] * EP[2] - EP[1] * EP[3]), //
@@ -29,19 +37,9 @@ void EulerParam::EPtoDCM() {
         1 - 2 * EP[0] * EP[0] - 2 * EP[1] * EP[1];
 }
 
-void EulerParam::renorm() {
-    f64 norm = 0;
-    for (int i = 0; i < 4; i++) {
-        norm += EP[i] * EP[i];
-    }
-    norm = sqrt(norm);
+void Attitude::renorm() { EP /= EP.norm(); }
 
-    for (int i = 0; i < 4; i++) {
-        EP[i] /= norm;
-    }
-}
-
-void EulerParam::EP_dottoOmega() {
+void Attitude::EP_dottoOmega() { // KDE
     Matrix4d mat;
     mat << EP(3), EP(2), -EP(1), -EP(0), -EP(2), EP(3), EP(0), -EP(1), EP(1),
         -EP(0), EP(3), -EP(2), EP(0), EP(1), EP(2), EP(3);
@@ -50,7 +48,7 @@ void EulerParam::EP_dottoOmega() {
     Vector3d Omega = temp.head(3);
 }
 
-void EulerParam::OmegatoEP_dot() {
+void Attitude::OmegatoEP_dot() { // KDE
     Vector4d EP_dot = Vector4d::Zero();
     Matrix4d mat;
     mat << EP(3), EP(2), -EP(1), -EP(0), -EP(2), EP(3), EP(0), -EP(1), EP(1),
@@ -60,7 +58,7 @@ void EulerParam::OmegatoEP_dot() {
     EP_dot = 1. / 2. * mat.transpose() * temp;
 }
 
-void EulerParam::DCMtoEP(Matrix3d C) {
+void Attitude::DCMtoEP(Matrix3d C) {
     // using Shepperds Method
 
     Eigen::Vector4d e_test = Eigen::Vector4d::Zero();
@@ -105,18 +103,10 @@ void EulerParam::DCMtoEP(Matrix3d C) {
     }
 }
 
-void EulerParam::EAtoEP(f64 angles[3], u8 seq[3]) {
-    // Matrix3d r;
-    // Matrix3d temp = Matrix3d::Identity();
-    // for (int i = 2; i >= 0; i--) {
-    //     r = rot(angles[i], seq[i]);
-    //     temp = temp * r;
-    // }
-
-    // b_C_n = temp;
+void Attitude::EAtoEP(f64 angles[3], u8 seq[3]) {
     b_C_n = rot(angles[2], seq[2]) * rot(angles[1], seq[1]) *
             rot(angles[0], seq[0]);
-    EulerParam::DCMtoEP(b_C_n);
+    Attitude::DCMtoEP(b_C_n);
 }
 
 Matrix3d rot(f64 angle, u8 axis) {
@@ -145,19 +135,19 @@ Matrix3d rot(f64 angle, u8 axis) {
     return out;
 }
 
-void EulerParam::PRPtoEP(Vector3d lambda, f64 theta) {
+void Attitude::PRPtoEP(Vector3d lambda, f64 theta) {
     lambda = lambda / lambda.norm();
     EP.head(3) = lambda * sin(theta / 2.);
     EP[3] = cos(theta / 2.);
 }
 
-void EulerParam::CRPtoEP(Vector3d rho) {
+void Attitude::CRPtoEP(Vector3d rho) {
     f64 denom = sqrt(1. + rho.dot(rho));
     EP.head(3) = rho / denom;
     EP[3] = 1. / denom;
 }
 
-void EulerParam::MRPtoEP(Vector3d sigma) {
+void Attitude::MRPtoEP(Vector3d sigma) {
     f64 denom = 1. + sigma.dot(sigma);
     EP.head(3) = 2. * sigma / denom;
     EP[3] = (1. - sigma.dot(sigma)) / denom;
