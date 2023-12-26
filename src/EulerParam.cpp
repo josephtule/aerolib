@@ -1,6 +1,8 @@
 #include "EulerParam.h"
 Matrix3d rot(f64 angle, u8 axis);
 
+EulerParam::EulerParam() {}
+
 EulerParam::EulerParam(std::initializer_list<f64> EP_in) {
     std::copy(EP_in.begin(), EP_in.end(), EP.begin());
 }
@@ -76,7 +78,6 @@ void EulerParam::DCMtoEP(Matrix3d C) {
     Eigen::Index ind;
     e_test.maxCoeff(&ind);
 
-    Eigen::Vector4d EP;
     double es[6] = {(C(0, 1) + C(1, 0)) / 4.0, (C(1, 2) + C(2, 1)) / 4.0,
                     (C(2, 0) + C(0, 2)) / 4.0, (C(1, 2) - C(2, 1)) / 4.0,
                     (C(2, 0) - C(0, 2)) / 4.0, (C(0, 1) - C(1, 0)) / 4.0};
@@ -105,10 +106,16 @@ void EulerParam::DCMtoEP(Matrix3d C) {
 }
 
 void EulerParam::EAtoEP(f64 angles[3], u8 seq[3]) {
-    for (int i = 2; i >= 0; i--) {
-        Matrix3d r = rot(angles[i], seq[i]);
-        b_C_n = b_C_n * r;
-    }
+    // Matrix3d r;
+    // Matrix3d temp = Matrix3d::Identity();
+    // for (int i = 2; i >= 0; i--) {
+    //     r = rot(angles[i], seq[i]);
+    //     temp = temp * r;
+    // }
+
+    // b_C_n = temp;
+    b_C_n = rot(angles[2], seq[2]) * rot(angles[1], seq[1]) *
+            rot(angles[0], seq[0]);
     EulerParam::DCMtoEP(b_C_n);
 }
 
@@ -135,6 +142,23 @@ Matrix3d rot(f64 angle, u8 axis) {
         out(1, 1) = ca;
         out(2, 2) = 1;
     }
-
     return out;
+}
+
+void EulerParam::PRPtoEP(Vector3d lambda, f64 theta) {
+    lambda = lambda / lambda.norm();
+    EP.head(3) = lambda * sin(theta / 2.);
+    EP[3] = cos(theta / 2.);
+}
+
+void EulerParam::CRPtoEP(Vector3d rho) {
+    f64 denom = sqrt(1. + rho.dot(rho));
+    EP.head(3) = rho / denom;
+    EP[3] = 1. / denom;
+}
+
+void EulerParam::MRPtoEP(Vector3d sigma) {
+    f64 denom = 1. + sigma.dot(sigma);
+    EP.head(3) = 2. * sigma / denom;
+    EP[3] = (1. - sigma.dot(sigma)) / denom;
 }

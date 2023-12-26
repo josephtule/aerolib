@@ -16,11 +16,13 @@ EulerAngle::EulerAngle(f64 EA_in[], u8 seq_in[]) {
 EulerAngle::~EulerAngle() {}
 
 void EulerAngle::EAtoDCM() {
+    Matrix3d r;
+    Matrix3d temp = Matrix3d::Identity();
     for (int i = 2; i >= 0; i--) {
-        Matrix3d r = EulerAngle::rot(EA[i], seq[i]);
-        b_C_n = b_C_n * r;
-        // std::cout << r << std::endl;
+        r = EulerAngle::rot(EA[i], seq[i]);
+        temp = temp * r;
     }
+    b_C_n = temp;
 }
 
 f64 EulerAngle::operator()(size_t ind) const { return EA[ind]; }
