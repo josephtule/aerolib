@@ -1,6 +1,7 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+#include "EOMS.h"
 #include "Integrator.h"
 #include "Satellite.h"
 #include "external.h"
@@ -16,6 +17,8 @@ class Simulation {
     };
     // attributes:
     Integrator integrator;
+    EOMS eoms;
+
     std::vector<Satellite> satellites; // vector of satellites
 };
 

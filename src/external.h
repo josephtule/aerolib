@@ -11,3 +11,4 @@ using Eigen::Matrix3d;
 using Eigen::Matrix4d;
 using Eigen::Vector3d;
 using Eigen::Vector4d;
+typedef Eigen::Vector<f64, 6> Vector6d;

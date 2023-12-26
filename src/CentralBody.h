@@ -4,7 +4,7 @@
 #include "external.h"
 
 class CentralBody {
-
+  public:
     // attributes:
     f64 mass;
     f64 mu;
