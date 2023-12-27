@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstddef>
 #include <eigen3/Eigen/Dense>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <iterator>
@@ -11,4 +12,5 @@ using Eigen::Matrix3d;
 using Eigen::Matrix4d;
 using Eigen::Vector3d;
 using Eigen::Vector4d;
+using Eigen::VectorXd;
 typedef Eigen::Vector<f64, 6> Vector6d;

@@ -15,6 +15,8 @@ class Simulation {
     void add_body(Satellite new_satellite) {
         satellites.push_back(new_satellite);
     };
+    void propagate(std::vector<Satellite> &satellites, EOMS &eoms,
+                   Integrator &integrator);
     // attributes:
     Integrator integrator;
     EOMS eoms;
