@@ -18,7 +18,7 @@ void Simulation::propagate() {
             state(Eigen::seq(3, 5)) = sat->velocity;
             if (eoms.dof == EOMS::combined) {
                 state(Eigen::seq(6, 9)) = sat->attitude.quat;
-                state(Eigen::seq(10, 13)) = sat->attitude.quat_dot;
+                state(Eigen::seq(10, 12)) = sat->attitude.omega;
             }
             VectorXd state_new =
                 integrator.step(update_state, time, state, dt, *sat);
@@ -32,9 +32,9 @@ void Simulation::propagate() {
             sat->velocity_hist[i + 1] = sat->velocity;
             if (eoms.dof == EOMS::combined) {
                 sat->attitude.quat = state(Eigen::seq(6, 9));
-                sat->attitude.quat_dot = state(Eigen::seq(10, 13));
+                sat->attitude.omega = state(Eigen::seq(10, 12));
                 sat->attitude.quat_hist[i + 1] = sat->attitude.quat;
-                sat->attitude.quat_dot_hist[i + 1] = sat->attitude.quat_dot;
+                sat->attitude.omega_hist[i + 1] = sat->attitude.omega;
             }
             time_hist[i + 1] = time;
         }
@@ -51,12 +51,11 @@ void Simulation::save_results() {
             out_eigen_vec(outfile, sat->position_hist[i], ",  ");
             outfile << ",  ";
             out_eigen_vec(outfile, sat->velocity_hist[i], ",  ");
-
             if (eoms.dof == EOMS::combined) {
                 outfile << ",  ";
                 out_eigen_vec(outfile, sat->attitude.quat_hist[i], ",  ");
                 outfile << ",  ";
-                out_eigen_vec(outfile, sat->attitude.quat_dot_hist[i], ",  ");
+                out_eigen_vec(outfile, sat->attitude.omega_hist[i], ",  ");
             }
             outfile << std::endl;
         }

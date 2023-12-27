@@ -4,7 +4,7 @@
 Vector3d EOMS::spherical_grav(Vector3d &position) {
     Vector3d acceleration = Vector3d::Zero();
     f64 r = position.norm();
-    acceleration = -central_body.mu / r * position;
+    acceleration = -central_body.mu / pow(r, 3) * position;
     return acceleration;
 }
 // attitude:

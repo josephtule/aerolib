@@ -25,15 +25,16 @@ class Attitude {
     Vector4d CRPtoEP(Vector3d rho);
     Vector4d MRPtoEP(Vector3d sigma);
     Vector4d PRPtoEP(Vector3d lambda, f64 theta);
+
     // attributes:
     Vector4d quat;
     Vector4d quat_dot = Vector4d::Zero();
-    Vector3d Omega = Vector3d::Zero();
+    Vector3d omega = Vector3d::Zero();
     Matrix3d b_C_n = Matrix3d::Identity();
     u32 N;
 
     // time histories:
     Vector4d *quat_hist = new Vector4d[N + 1];
-    Vector4d *quat_dot_hist = new Vector4d[N + 1];
+    Vector3d *omega_hist = new Vector3d[N + 1];
 };
 #endif

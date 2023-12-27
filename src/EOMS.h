@@ -25,7 +25,7 @@ class EOMS {
         : central_body(central_body), gravity_model(grav_model),
           aerodynamics_model(aero_model), dof(dof){};
     // methods:
-    VectorXd dxdt(f64 &time, VectorXd &state, Satellite sat) {
+    VectorXd dxdt(f64 &time, VectorXd &state, Satellite &sat) {
 
         // TODO: make state vector size 14 to include translational and angular
         VectorXd dxdt_vec = VectorXd::Zero(state.size());
@@ -50,13 +50,12 @@ class EOMS {
 
         if (dof == combined) {
             Vector4d quat = state(Eigen::seq(6, 9));
-            Vector4d quat_dot = state(Eigen::seq(10, 13));
-            dxdt_vec(Eigen::seq(6, 9)) = quat_dot;
-            Vector3d omega = sat.attitude.EP_dottoOmega(quat, quat_dot);
-            Vector3d torque = {0, 0, 0};
-            Vector3d omega_dot = euler_rot(omega, sat, torque);
-            dxdt_vec(Eigen::seq(10, 13)) =
+            Vector3d omega = state(Eigen::seq(10, 12));
+            dxdt_vec(Eigen::seq(6, 9)) =
                 sat.attitude.OmegatoEP_dot(omega, quat);
+
+            Vector3d torque = {0, 0, 0};
+            dxdt_vec(Eigen::seq(10, 12)) = euler_rot(omega, sat, torque);
         }
         return dxdt_vec;
     }

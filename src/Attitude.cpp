@@ -9,24 +9,27 @@ Attitude::Attitude(std::initializer_list<f64> EP_in,
     std::copy(EP_dot_in.begin(), EP_dot_in.end(), quat_dot.data());
     Attitude::renorm();
     quat_hist[0] = quat;
-    quat_dot_hist[0] = quat_dot;
+    omega = EP_dottoOmega(quat, quat_dot);
+    omega_hist[0] = omega;
 }
 
-Attitude::Attitude(f64 EP_in[], f64 EP_dot_in[], u32 N) : N(N) {
+Attitude::Attitude(f64 quat_in[], f64 quat_dot_in[], u32 N) : N(N) {
     for (int i = 0; i < 4; i++) {
-        quat[i] = EP_in[i];
-        quat_dot[i] = EP_dot_in[i];
+        quat[i] = quat_in[i];
+        quat_dot[i] = quat_dot_in[i];
     }
     Attitude::renorm();
     quat_hist[0] = quat;
-    quat_dot_hist[0] = quat_dot;
+    omega = EP_dottoOmega(quat, quat_dot);
+    omega_hist[0] = omega;
 }
 
-Attitude::Attitude(Vector4d EP, Vector4d EP_dot, u32 N)
-    : quat(EP), quat_dot(EP_dot), N(N) {
+Attitude::Attitude(Vector4d quat, Vector4d quat_dot, u32 N)
+    : quat(quat), quat_dot(quat_dot), N(N) {
     Attitude::renorm();
     quat_hist[0] = quat;
-    quat_dot_hist[0] = quat_dot;
+    omega = EP_dottoOmega(quat, quat_dot);
+    omega_hist[0] = omega;
 }
 
 Attitude::~Attitude() {}
@@ -56,7 +59,7 @@ Vector3d Attitude::EP_dottoOmega(Vector4d quat, Vector4d quat_dot) { // KDE
         quat(2), quat(3);
 
     Vector4d temp = 2 * mat * quat_dot;
-    Vector3d omega = temp.head(3);
+    Vector3d omega = temp(Eigen::seq(0, 2));
     return omega;
 }
 
@@ -67,7 +70,7 @@ Vector4d Attitude::OmegatoEP_dot(Vector3d omega, Vector4d quat) { // KDE
         -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
         quat(2), quat(3);
     Vector4d temp = Vector4d::Zero();
-    temp.head(3) = Omega;
+    temp(Eigen::seq(0, 2)) = omega;
     quat_dot = 1. / 2. * mat.transpose() * temp;
     return quat_dot;
 }
