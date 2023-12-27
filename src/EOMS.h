@@ -17,15 +17,15 @@ class EOMS {
         none,
     };
     // methods:
-    Vector6d dxdt(f64 &time, Vector12d &state) {
-        Vector6d dxdt = Vector6d::Zero();
+    Vector6d dxdt(f64 &time, VectorXd &state) {
+        Vector6d dxdt_vec = Vector6d::Zero();
         Vector3d position = state(Eigen::seq(0, 2));
 
-        dxdt(Eigen::seq(0, 2)) = state(Eigen::seq(3, 5));
+        dxdt_vec(Eigen::seq(0, 2)) = state(Eigen::seq(3, 5));
 
         switch (gravity_model) {
         case spherical: {
-            dxdt(Eigen::seq(3, 5)) = spherical_grav(position);
+            dxdt_vec(Eigen::seq(3, 5)) = spherical_grav(position);
             break;
         }
         case spherical_harmonic: {
@@ -37,7 +37,7 @@ class EOMS {
             break;
         }
         }
-        return dxdt;
+        return dxdt_vec;
     }
 
     Vector3d spherical_grav(Vector3d &position);

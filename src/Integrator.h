@@ -4,7 +4,7 @@
 #include "external.h"
 #include <eigen3/Eigen/src/Core/Matrix.h>
 
-using EOMSFunction = std::function<VectorXd(f64 time, const VectorXd &state)>;
+using EOMSFunction = std::function<VectorXd(f64 time, VectorXd state)>;
 
 class Integrator {
     enum IntegratorType {
