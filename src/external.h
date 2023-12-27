@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstddef>
 #include <eigen3/Eigen/Dense>
+#include <fstream>
 #include <functional>
 #include <iomanip>
 #include <iostream>

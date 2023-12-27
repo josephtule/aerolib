@@ -7,9 +7,10 @@ class Attitude {
   public:
     // construct/destruct
     Attitude();
-    Attitude(std::initializer_list<f64> EP_in);
-    Attitude(f64 EP_in[]);
-    Attitude(Vector4d EP);
+    Attitude(std::initializer_list<f64> EP_in,
+             std::initializer_list<f64> EP_dot_in);
+    Attitude(f64 EP_in[], f64 EP_dot_in[]);
+    Attitude(Vector4d EP, Vector4d EP_dot);
     ~Attitude();
 
     // methods:
@@ -26,8 +27,8 @@ class Attitude {
     void MRPtoEP(Vector3d sigma);
     void PRPtoEP(Vector3d lambda, f64 theta);
     // attributes:
-    Vector4d EP;
-    Vector4d EP_dot = Vector4d::Zero();
+    Vector4d quat;
+    Vector4d quat_dot = Vector4d::Zero();
     Vector3d Omega = Vector3d::Zero();
     Matrix3d b_C_n = Matrix3d::Identity();
 

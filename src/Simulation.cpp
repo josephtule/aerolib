@@ -1,8 +1,6 @@
 #include "Simulation.h"
 
-void Simulation::propagate(/* std::vector<Satellite> &satellites, EOMS &eoms,
-                           Integrator &integrator,*/
-                           f64 dt, u32 max_steps) {
+void Simulation::propagate() {
     EOMS &_eoms = eoms;
     auto update_state = [&_eoms](double t, VectorXd s) {
         return _eoms.dxdt(t, s);
@@ -22,6 +20,7 @@ void Simulation::propagate(/* std::vector<Satellite> &satellites, EOMS &eoms,
             sat->velocity = state(Eigen::seq(3, 5));
             sat->position_hist.push_back(sat->position);
             sat->velocity_hist.push_back(sat->velocity);
+            time_hist.push_back(time);
         }
     }
 }

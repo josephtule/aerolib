@@ -7,10 +7,13 @@
 class Satellite {
   public:
     // constructor/destructor:
-    Satellite(Vector3d position, Vector3d velocity, Attitude &attitude)
-        : position(position), velocity(velocity), attitude(attitude) {
+    Satellite(Vector3d position, Vector3d velocity, Attitude &attitude,
+              std::string name)
+        : position(position), velocity(velocity), attitude(attitude),
+          name(name) {
         position_hist.push_back(position);
         velocity_hist.push_back(velocity);
+        euler_param_hist.push_back(attitude.quat);
     };
     ~Satellite(){};
     // methods:
@@ -22,10 +25,12 @@ class Satellite {
     f64 mass;
     Matrix3d I; // inertia matrix
     f64 area;
-
+    std::string name;
     // time histories:
     std::vector<Vector3d> position_hist = {};
     std::vector<Vector3d> velocity_hist = {};
+    std::vector<Vector4d> euler_param_hist = {};
+    std::vector<Vector3d> omega_hist = {};
 };
 
 #endif
