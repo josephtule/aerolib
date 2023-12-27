@@ -9,6 +9,8 @@ Attitude::Attitude(std::initializer_list<f64> EP_in,
     std::copy(EP_in.begin(), EP_in.end(), quat.data());
     std::copy(EP_dot_in.begin(), EP_dot_in.end(), quat_dot.data());
     Attitude::renorm();
+    quat_hist.push_back(quat);
+    quat_dot_hist.push_back(quat_dot);
 }
 
 Attitude::Attitude(f64 EP_in[], f64 EP_dot_in[]) {
@@ -17,17 +19,22 @@ Attitude::Attitude(f64 EP_in[], f64 EP_dot_in[]) {
         quat_dot[i] = EP_dot_in[i];
     }
     Attitude::renorm();
+    quat_hist.push_back(quat);
+    quat_dot_hist.push_back(quat_dot);
 }
 
 Attitude::Attitude(Vector4d EP, Vector4d EP_dot) : quat(EP), quat_dot(EP_dot) {
     Attitude::renorm();
+    quat_hist.push_back(quat);
+    quat_dot_hist.push_back(quat_dot);
 }
 
 Attitude::~Attitude() {}
 
 f64 Attitude::operator()(size_t ind) const { return quat[ind]; }
 
-void Attitude::EPtoDCM() {
+Matrix3d Attitude::EPtoDCM(Vector4d quat) {
+    Matrix3d b_C_n;
     b_C_n << 1 - 2 * quat[1] * quat[1] - 2 * quat[2] * quat[2],
         2 * (quat[0] * quat[1] + quat[2] * quat[3]),
         2 * (quat[0] * quat[2] - quat[1] * quat[3]), //
@@ -37,34 +44,37 @@ void Attitude::EPtoDCM() {
         2 * (quat[0] * quat[2] + quat[1] * quat[3]),
         2 * (quat[1] * quat[2] - quat[0] * quat[3]),
         1 - 2 * quat[0] * quat[0] - 2 * quat[1] * quat[1];
+    return b_C_n;
 }
 
 void Attitude::renorm() { quat /= quat.norm(); }
 
-void Attitude::EP_dottoOmega() { // KDE
+Vector3d Attitude::EP_dottoOmega(Vector4d quat, Vector4d quat_dot) { // KDE
     Matrix4d mat;
     mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
         -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
         quat(2), quat(3);
 
     Vector4d temp = 2 * mat * quat_dot;
-    Vector3d Omega = temp.head(3);
+    Vector3d omega = temp.head(3);
+    return omega;
 }
 
-void Attitude::OmegatoEP_dot() { // KDE
-    Vector4d EP_dot = Vector4d::Zero();
+Vector4d Attitude::OmegatoEP_dot(Vector3d omega, Vector4d quat) { // KDE
+    Vector4d quat_dot = Vector4d::Zero();
     Matrix4d mat;
     mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
         -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
         quat(2), quat(3);
     Vector4d temp = Vector4d::Zero();
     temp.head(3) = Omega;
-    EP_dot = 1. / 2. * mat.transpose() * temp;
+    quat_dot = 1. / 2. * mat.transpose() * temp;
+    return quat_dot;
 }
 
-void Attitude::DCMtoEP(Matrix3d C) {
+Vector4d Attitude::DCMtoEP(Matrix3d C) {
     // using Shepperds Method
-
+    Vector4d quat;
     Eigen::Vector4d e_test = Eigen::Vector4d::Zero();
     double trace_C = C.trace();
 
@@ -105,12 +115,14 @@ void Attitude::DCMtoEP(Matrix3d C) {
         // Handle unexpected case
         std::cerr << "Unexpected case encountered!" << std::endl;
     }
+    return quat;
 }
 
-void Attitude::EAtoEP(f64 angles[3], u8 seq[3]) {
-    b_C_n = rot(angles[2], seq[2]) * rot(angles[1], seq[1]) *
-            rot(angles[0], seq[0]);
-    Attitude::DCMtoEP(b_C_n);
+Vector4d Attitude::EAtoEP(f64 angles[3], u8 seq[3]) {
+    Matrix3d b_C_n = rot(angles[2], seq[2]) * rot(angles[1], seq[1]) *
+                     rot(angles[0], seq[0]);
+    Vector4d quat = Attitude::DCMtoEP(b_C_n);
+    return quat;
 }
 
 Matrix3d rot(f64 angle, u8 axis) {
@@ -139,20 +151,26 @@ Matrix3d rot(f64 angle, u8 axis) {
     return out;
 }
 
-void Attitude::PRPtoEP(Vector3d lambda, f64 theta) {
+Vector4d Attitude::PRPtoEP(Vector3d lambda, f64 theta) {
+    Vector4d quat;
     lambda = lambda / lambda.norm();
     quat.head(3) = lambda * sin(theta / 2.);
     quat[3] = cos(theta / 2.);
+    return quat;
 }
 
-void Attitude::CRPtoEP(Vector3d rho) {
+Vector4d Attitude::CRPtoEP(Vector3d rho) {
+    Vector4d quat;
     f64 denom = sqrt(1. + rho.dot(rho));
     quat.head(3) = rho / denom;
     quat[3] = 1. / denom;
+    return quat;
 }
 
-void Attitude::MRPtoEP(Vector3d sigma) {
+Vector4d Attitude::MRPtoEP(Vector3d sigma) {
+    Vector4d quat;
     f64 denom = 1. + sigma.dot(sigma);
     quat.head(3) = 2. * sigma / denom;
     quat[3] = (1. - sigma.dot(sigma)) / denom;
+    return quat;
 }

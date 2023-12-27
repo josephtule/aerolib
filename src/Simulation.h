@@ -41,6 +41,13 @@ class Simulation {
                 outfile << ",  ";
                 out_eigen_vec(outfile, sat->velocity_hist[i], ",  ");
 
+                if (eoms.dof == EOMS::combined) {
+                    outfile << ",  ";
+                    out_eigen_vec(outfile, sat->attitude.quat_hist[i], ",  ");
+                    outfile << ",  ";
+                    out_eigen_vec(outfile, sat->attitude.quat_dot_hist[i],
+                                  ",  ");
+                }
                 outfile << std::endl;
             }
             outfile.close();

@@ -7,6 +7,10 @@
 
 class EOMS {
   public:
+    enum DegreesOfFreedom {
+        translational,
+        combined,
+    };
     // models:
     enum GravityModel {
         spherical,
@@ -17,15 +21,17 @@ class EOMS {
         none,
     };
     EOMS(CentralBody &central_body, GravityModel grav_model,
-         AerodynamicsModel aero_model)
+         AerodynamicsModel aero_model, DegreesOfFreedom dof)
         : central_body(central_body), gravity_model(grav_model),
-          aerodynamics_model(aero_model){};
+          aerodynamics_model(aero_model), dof(dof){};
     // methods:
-    Vector6d dxdt(f64 &time, VectorXd &state) {
-        Vector6d dxdt_vec = Vector6d::Zero();
-        Vector3d position = state(Eigen::seq(0, 2));
+    VectorXd dxdt(f64 &time, VectorXd &state, Satellite sat) {
 
-        dxdt_vec(Eigen::seq(0, 2)) = state(Eigen::seq(3, 5));
+        // TODO: make state vector size 14 to include translational and angular
+        VectorXd dxdt_vec = VectorXd::Zero(state.size());
+        Vector3d position = state(Eigen::seq(0, 2));
+        Vector3d velocity = state(Eigen::seq(3, 5));
+        dxdt_vec(Eigen::seq(0, 2)) = velocity;
 
         switch (gravity_model) {
         case spherical: {
@@ -41,6 +47,17 @@ class EOMS {
             break;
         }
         }
+
+        if (dof == combined) {
+            Vector4d quat = state(Eigen::seq(6, 9));
+            Vector4d quat_dot = state(Eigen::seq(10, 13));
+            dxdt_vec(Eigen::seq(6, 9)) = quat_dot;
+            Vector3d omega = sat.attitude.EP_dottoOmega(quat, quat_dot);
+            Vector3d torque = {0, 0, 0};
+            Vector3d omega_dot = euler_rot(omega, sat, torque);
+            dxdt_vec(Eigen::seq(10, 13)) =
+                sat.attitude.OmegatoEP_dot(omega, quat);
+        }
         return dxdt_vec;
     }
 
@@ -49,6 +66,7 @@ class EOMS {
     // attributes:
     std::vector<Satellite> satellites;
     CentralBody central_body;
+    DegreesOfFreedom dof;
     GravityModel gravity_model;
     AerodynamicsModel aerodynamics_model;
 };
