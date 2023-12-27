@@ -17,7 +17,7 @@ class EOMS {
         none,
     };
     // methods:
-    Vector6d dxdt_3dof(f64 time, Vector6d &state) {
+    Vector6d dxdt(f64 &time, Vector12d &state) {
         Vector6d dxdt = Vector6d::Zero();
         Vector3d position = state(Eigen::seq(0, 2));
 

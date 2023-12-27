@@ -14,3 +14,4 @@ using Eigen::Vector3d;
 using Eigen::Vector4d;
 using Eigen::VectorXd;
 typedef Eigen::Vector<f64, 6> Vector6d;
+typedef Eigen::Vector<f64, 12> Vector12d;
