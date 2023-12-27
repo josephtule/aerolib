@@ -6,11 +6,10 @@
 class Attitude {
   public:
     // construct/destruct
-    Attitude();
     Attitude(std::initializer_list<f64> EP_in,
-             std::initializer_list<f64> EP_dot_in);
-    Attitude(f64 EP_in[], f64 EP_dot_in[]);
-    Attitude(Vector4d EP, Vector4d EP_dot);
+             std::initializer_list<f64> EP_dot_in, u32 N);
+    Attitude(f64 EP_in[], f64 EP_dot_in[], u32 N);
+    Attitude(Vector4d EP, Vector4d EP_dot, u32 N);
     ~Attitude();
 
     // methods:
@@ -31,9 +30,10 @@ class Attitude {
     Vector4d quat_dot = Vector4d::Zero();
     Vector3d Omega = Vector3d::Zero();
     Matrix3d b_C_n = Matrix3d::Identity();
+    u32 N;
 
     // time histories:
-    std::vector<Vector4d> quat_hist;
-    std::vector<Vector4d> quat_dot_hist;
+    Vector4d *quat_hist = new Vector4d[N + 1];
+    Vector4d *quat_dot_hist = new Vector4d[N + 1];
 };
 #endif

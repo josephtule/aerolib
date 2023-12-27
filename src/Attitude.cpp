@@ -2,31 +2,31 @@
 
 Matrix3d rot(f64 angle, u8 axis);
 
-Attitude::Attitude() {}
-
 Attitude::Attitude(std::initializer_list<f64> EP_in,
-                   std::initializer_list<f64> EP_dot_in) {
+                   std::initializer_list<f64> EP_dot_in, u32 N)
+    : N(N) {
     std::copy(EP_in.begin(), EP_in.end(), quat.data());
     std::copy(EP_dot_in.begin(), EP_dot_in.end(), quat_dot.data());
     Attitude::renorm();
-    quat_hist.push_back(quat);
-    quat_dot_hist.push_back(quat_dot);
+    quat_hist[0] = quat;
+    quat_dot_hist[0] = quat_dot;
 }
 
-Attitude::Attitude(f64 EP_in[], f64 EP_dot_in[]) {
+Attitude::Attitude(f64 EP_in[], f64 EP_dot_in[], u32 N) : N(N) {
     for (int i = 0; i < 4; i++) {
         quat[i] = EP_in[i];
         quat_dot[i] = EP_dot_in[i];
     }
     Attitude::renorm();
-    quat_hist.push_back(quat);
-    quat_dot_hist.push_back(quat_dot);
+    quat_hist[0] = quat;
+    quat_dot_hist[0] = quat_dot;
 }
 
-Attitude::Attitude(Vector4d EP, Vector4d EP_dot) : quat(EP), quat_dot(EP_dot) {
+Attitude::Attitude(Vector4d EP, Vector4d EP_dot, u32 N)
+    : quat(EP), quat_dot(EP_dot), N(N) {
     Attitude::renorm();
-    quat_hist.push_back(quat);
-    quat_dot_hist.push_back(quat_dot);
+    quat_hist[0] = quat;
+    quat_dot_hist[0] = quat_dot;
 }
 
 Attitude::~Attitude() {}

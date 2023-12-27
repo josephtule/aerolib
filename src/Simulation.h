@@ -11,10 +11,10 @@ class Simulation {
   public:
     // constructor/destructor:
     Simulation(std::vector<Satellite *> &satellites, Integrator &integrator,
-               EOMS eoms, f64 time_0, f64 dt, u32 max_steps)
-        : satellites(satellites), integrator(integrator), time(time_0),
+               EOMS eoms, f64 time, f64 dt, u32 max_steps)
+        : satellites(satellites), integrator(integrator), time(time),
           eoms(eoms), dt(dt), max_steps(max_steps) {
-        time_hist.push_back(time);
+        time_hist[0] = time;
     };
     // methods:
     void add_body(Satellite *new_satellite) {
@@ -30,29 +30,7 @@ class Simulation {
             }
         }
     }
-    void save_results() {
-        for (Satellite *sat : satellites) {
-            std::ofstream outfile;
-            outfile.open((sat->name) + ".txt");
-            outfile << std::setprecision(16);
-            for (int i = 0; i < max_steps; i++) {
-                outfile << time_hist[i] << ",  ";
-                out_eigen_vec(outfile, sat->position_hist[i], ",  ");
-                outfile << ",  ";
-                out_eigen_vec(outfile, sat->velocity_hist[i], ",  ");
-
-                if (eoms.dof == EOMS::combined) {
-                    outfile << ",  ";
-                    out_eigen_vec(outfile, sat->attitude.quat_hist[i], ",  ");
-                    outfile << ",  ";
-                    out_eigen_vec(outfile, sat->attitude.quat_dot_hist[i],
-                                  ",  ");
-                }
-                outfile << std::endl;
-            }
-            outfile.close();
-        }
-    };
+    void save_results();
     void propagate();
 
     // attributes:
@@ -62,7 +40,7 @@ class Simulation {
     f64 time;
     f64 dt;
     u32 max_steps;
-    std::vector<f64> time_hist = {};
+    f64 *time_hist = new f64[max_steps + 1];
     std::vector<Satellite *> satellites; // vector of satellites
 };
 

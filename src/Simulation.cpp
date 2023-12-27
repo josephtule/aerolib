@@ -28,15 +28,38 @@ void Simulation::propagate() {
 
             sat->position = state(Eigen::seq(0, 2));
             sat->velocity = state(Eigen::seq(3, 5));
-            sat->position_hist.push_back(sat->position);
-            sat->velocity_hist.push_back(sat->velocity);
+            sat->position_hist[i + 1] = sat->position;
+            sat->velocity_hist[i + 1] = sat->velocity;
             if (eoms.dof == EOMS::combined) {
                 sat->attitude.quat = state(Eigen::seq(6, 9));
                 sat->attitude.quat_dot = state(Eigen::seq(10, 13));
-                sat->attitude.quat_hist.push_back(sat->attitude.quat);
-                sat->attitude.quat_dot_hist.push_back(sat->attitude.quat_dot);
+                sat->attitude.quat_hist[i + 1] = sat->attitude.quat;
+                sat->attitude.quat_dot_hist[i + 1] = sat->attitude.quat_dot;
             }
-            time_hist.push_back(time);
+            time_hist[i + 1] = time;
         }
     }
 }
+
+void Simulation::save_results() {
+    for (Satellite *sat : satellites) {
+        std::ofstream outfile;
+        outfile.open((sat->name) + ".txt");
+        outfile << std::setprecision(16);
+        for (int i = 0; i < max_steps + 1; i++) {
+            outfile << time_hist[i] << ",  ";
+            out_eigen_vec(outfile, sat->position_hist[i], ",  ");
+            outfile << ",  ";
+            out_eigen_vec(outfile, sat->velocity_hist[i], ",  ");
+
+            if (eoms.dof == EOMS::combined) {
+                outfile << ",  ";
+                out_eigen_vec(outfile, sat->attitude.quat_hist[i], ",  ");
+                outfile << ",  ";
+                out_eigen_vec(outfile, sat->attitude.quat_dot_hist[i], ",  ");
+            }
+            outfile << std::endl;
+        }
+        outfile.close();
+    }
+};
