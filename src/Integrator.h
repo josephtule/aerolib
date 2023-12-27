@@ -7,16 +7,12 @@
 using EOMSFunction = std::function<VectorXd(f64 time, VectorXd state)>;
 
 class Integrator {
+  public:
     enum IntegratorType {
         RK4,
         Euler,
     };
-
-  public:
-    Integrator(IntegratorType type)
-        : type(type){
-              //
-          };
+    Integrator(IntegratorType type) : type(type){};
     ~Integrator(){};
     VectorXd step(EOMSFunction f, f64 &time, VectorXd &state, f64 dt) {
         switch (type) {

@@ -16,6 +16,10 @@ class EOMS {
     enum AerodynamicsModel {
         none,
     };
+    EOMS(CentralBody &central_body, GravityModel grav_model,
+         AerodynamicsModel aero_model)
+        : central_body(central_body), gravity_model(grav_model),
+          aerodynamics_model(aero_model){};
     // methods:
     Vector6d dxdt(f64 &time, VectorXd &state) {
         Vector6d dxdt_vec = Vector6d::Zero();

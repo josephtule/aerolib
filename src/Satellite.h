@@ -7,7 +7,7 @@
 class Satellite {
   public:
     // constructor/destructor:
-    Satellite(Vector3d position, Vector3d velocity, Attitude attitude)
+    Satellite(Vector3d position, Vector3d velocity, Attitude &attitude)
         : position(position), velocity(velocity), attitude(attitude) {
         position_hist.push_back(position);
         velocity_hist.push_back(velocity);
