@@ -1,34 +1,20 @@
 #include "Attitude.h"
+#include <eigen3/Eigen/src/Core/Matrix.h>
 
 Matrix3d rot(f64 angle, u8 axis);
-
-Attitude::Attitude(std::initializer_list<f64> EP_in,
-                   std::initializer_list<f64> EP_dot_in, u32 N)
-    : N(N) {
-    std::copy(EP_in.begin(), EP_in.end(), quat.data());
-    std::copy(EP_dot_in.begin(), EP_dot_in.end(), quat_dot.data());
-    Attitude::renorm();
-    quat_hist[0] = quat;
-    omega = EP_dottoOmega(quat, quat_dot);
-    omega_hist[0] = omega;
-}
-
-Attitude::Attitude(f64 quat_in[], f64 quat_dot_in[], u32 N) : N(N) {
-    for (int i = 0; i < 4; i++) {
-        quat[i] = quat_in[i];
-        quat_dot[i] = quat_dot_in[i];
-    }
-    Attitude::renorm();
-    quat_hist[0] = quat;
-    omega = EP_dottoOmega(quat, quat_dot);
-    omega_hist[0] = omega;
-}
 
 Attitude::Attitude(Vector4d quat, Vector4d quat_dot, u32 N)
     : quat(quat), quat_dot(quat_dot), N(N) {
     Attitude::renorm();
     quat_hist[0] = quat;
     omega = EP_dottoOmega(quat, quat_dot);
+    omega_hist[0] = omega;
+}
+
+Attitude::Attitude(Vector4d quat, Vector3d omega, u32 N)
+    : quat(quat), omega(omega), N(N) {
+    Attitude::renorm();
+    quat_hist[0] = quat;
     omega_hist[0] = omega;
 }
 
@@ -53,25 +39,34 @@ Matrix3d Attitude::EPtoDCM(Vector4d quat) {
 void Attitude::renorm() { quat /= quat.norm(); }
 
 Vector3d Attitude::EP_dottoOmega(Vector4d quat, Vector4d quat_dot) { // KDE
-    Matrix4d mat;
-    mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
-        -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
-        quat(2), quat(3);
-
-    Vector4d temp = 2 * mat * quat_dot;
-    Vector3d omega = temp(Eigen::seq(0, 2));
+    // Matrix4d mat;
+    // mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
+    //     -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
+    //     quat(2), quat(3);
+    //
+    // Vector4d temp = 2 * mat * quat_dot;
+    // Vector3d omega = temp(Eigen::seq(0, 2));
+    Vector3d omega = 2 * (quat(3) * quat_dot(Eigen::seq(0, 2)) -
+                          Attitude::CrossOperator(quat(Eigen::seq(0, 2))) *
+                              quat_dot(Eigen::seq(0, 2)) -
+                          quat_dot(3) * quat(Eigen::seq(0, 2)));
     return omega;
 }
 
 Vector4d Attitude::OmegatoEP_dot(Vector3d omega, Vector4d quat) { // KDE
     Vector4d quat_dot = Vector4d::Zero();
-    Matrix4d mat;
-    mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
-        -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
-        quat(2), quat(3);
-    Vector4d temp = Vector4d::Zero();
-    temp(Eigen::seq(0, 2)) = omega;
-    quat_dot = 1. / 2. * mat.transpose() * temp;
+    // Matrix4d mat;
+    // mat << quat(3), quat(2), -quat(1), -quat(0), -quat(2), quat(3), quat(0),
+    //     -quat(1), quat(1), -quat(0), quat(3), -quat(2), quat(0), quat(1),
+    //     quat(2), quat(3);
+    // Vector4d temp = Vector4d::Zero();
+    // temp(Eigen::seq(0, 2)) = omega;
+    // quat_dot = 1. / 2. * mat.transpose() * temp;
+    quat_dot(Eigen::seq(0, 2)) =
+        1. / 2. *
+        (quat(3) * omega +
+         Attitude::CrossOperator(quat(Eigen::seq(0, 2))) * omega);
+    quat_dot(3) = -1. / 2. * quat(Eigen::seq(0, 2)).dot(omega);
     return quat_dot;
 }
 

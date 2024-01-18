@@ -6,10 +6,8 @@
 class Attitude {
   public:
     // construct/destruct
-    Attitude(std::initializer_list<f64> EP_in,
-             std::initializer_list<f64> EP_dot_in, u32 N);
-    Attitude(f64 EP_in[], f64 EP_dot_in[], u32 N);
     Attitude(Vector4d EP, Vector4d EP_dot, u32 N);
+    Attitude(Vector4d EP, Vector3d Omega, u32 N);
     ~Attitude();
 
     // methods:
@@ -17,7 +15,11 @@ class Attitude {
     void renorm();
     Vector3d EP_dottoOmega(Vector4d quat, Vector4d quat_dot);
     Vector4d OmegatoEP_dot(Vector3d omega, Vector4d quat);
-
+    static Matrix3d CrossOperator(Vector3d x) {
+        Matrix3d out;
+        out << 0., -x(2), x(1), x(2), 0., -x(0), -x(1), x(0), 0.;
+        return out;
+    }
     // Conversions:
     Matrix3d EPtoDCM(Vector4d quat);
     Vector4d DCMtoEP(Matrix3d b_C_n);

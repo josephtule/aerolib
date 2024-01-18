@@ -31,7 +31,8 @@ void Simulation::propagate() {
             sat->position_hist[i + 1] = sat->position;
             sat->velocity_hist[i + 1] = sat->velocity;
             if (eoms.dof == EOMS::combined) {
-                sat->attitude.quat = state(Eigen::seq(6, 9));
+                sat->attitude.quat =
+                    state(Eigen::seq(6, 9)) / state(Eigen::seq(6, 9)).norm();
                 sat->attitude.omega = state(Eigen::seq(10, 12));
                 sat->attitude.quat_hist[i + 1] = sat->attitude.quat;
                 sat->attitude.omega_hist[i + 1] = sat->attitude.omega;
