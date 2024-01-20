@@ -1,4 +1,4 @@
-#include "EOMS.h"
+#include "astrolib.h"
 
 VectorXd EOMS::dxdt(f64 &time, VectorXd &state, Satellite &sat) {
 

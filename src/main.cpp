@@ -1,68 +1,76 @@
-#include "Attitude.h"
-#include "external.h"
-#include <chrono>
-#include <iostream>
+#include "astrolib.h"
 #define PI 3.14159265358979323846
 
-using namespace std::chrono;
-int main() {
-    Matrix3d bCn;
-    bCn << 0.836516303737808, 0.482962913144534, -0.258819045102521,
-        -0.393184592519655, 0.858058344800062, 0.330366089549352,
-        0.381636410456325, -0.174592959325177, 0.907673371190369;
-    Attitude e;
-    e.DCMtoEP(bCn);
+namespace plt = matplot;
 
-    auto start = high_resolution_clock::now();
-    e.EPtoDCM();
-    auto end = high_resolution_clock::now();
-    auto dur = duration_cast<microseconds>(end - start);
-    std::cout << "Original C : " << std::endl << e.b_C_n << std::endl;
-    std::cout << "Elapsed time: " << dur.count() * 1e-6 << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
+int main(int argc, char *argv[]) {
+    // TODO: set up scenario in matlab and compare to here
+    u32 N;
+    if (argc == 1) {
+        N = 10000;
+    } else {
+        N = std::stoi(argv[1]);
+    }
+    CentralBody earth(5.9722e24, 3.986004418e5, 6378.137); // using km
+    Integrator rk4(Integrator::RK4);
+    EOMS::DegreesOfFreedom dofs;
+    if (argc > 2) {
+        if (std::string(argv[2]) == "translational") {
+            dofs = EOMS::translational;
+        } else if (std::string(argv[2]) == "combined") {
+            dofs = EOMS::combined;
+        } else {
+            std::cerr << "Incorrect DOF flag" << std::endl;
+        }
+    } else {
+        dofs = EOMS::translational;
+    }
+    EOMS spherical(earth, EOMS::spherical, EOMS::none, dofs);
 
-    f64 ea[] = {PI / 6, PI / 12, 20 * PI / 180.};
-    u8 seq[] = {3, 2, 1};
-    start = high_resolution_clock::now();
-    e.EAtoEP(ea, seq);
-    end = high_resolution_clock::now();
-    dur = duration_cast<microseconds>(end - start);
-    std::cout << "From EA    : " << std::endl << e.b_C_n << std::endl;
-    std::cout << "Elapsed time: " << dur.count() * 1e-6 << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
+    if (dofs == EOMS::translational) {
+        std::cout << "3-DOF Simulation" << std::endl;
+    } else if (dofs == EOMS::combined) {
+        std::cout << "6-DOF Simulation" << std::endl;
+    }
+    f64 t0 = 0.;
+    f64 dt = 0.5;
+    Vector3d pos_0 = {earth.equatorial_radius + 250., 0., 0.};
+    double vc = sqrt(earth.mu / pos_0.norm());
+    Vector3d vel_0 = {0., vc * cos(.1), vc * sin(.1)};
+    Attitude sat1_att(Vector4d({0.3510, 0.0554, -0.4127, 0.8387}),
+                      Vector3d({.1, .15, .3}), N);
+    Satellite sat1(pos_0, vel_0, sat1_att, "sat1", N);
+    sat1.I << 125., 0., 0., 0., 125., 0., 0., 0., 100.;
+    std::vector<Satellite *> sats;
+    sats.push_back(&sat1);
+    Simulation sim(sats, rk4, spherical, t0, dt, N);
+    sim.propagate();
+    if (argc > 3 && std::string(argv[3]) == "save") {
+        sim.save_results();
+    }
 
-    std::cout << "Original EP: " << std::endl << e.EP << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
+    if (argc > 3 && std::string(argv[3]) == "plot") {
+        std::vector<double> satx;
+        std::vector<double> saty;
+        std::vector<double> satz;
+        for (int i = 0; i < N; i++) {
+            satx.push_back(sim.satellites[0]->position_hist[i](0));
+            saty.push_back(sim.satellites[0]->position_hist[i](1));
+            satz.push_back(sim.satellites[0]->position_hist[i](2));
+        }
+        plt::plot3(satx, saty, satz);
+        plt::xlim({-10000, 10000});
+        plt::ylim({-10000, 10000});
+        plt::zlim({-10000, 10000});
+        plt::axis("equal");
+        plt::axis("square");
+        plt::xlabel("x");
+        plt::ylabel("y");
+        plt::zlabel("z");
+        plt::grid("on");
 
-    Vector3d lambda = {0.421854978000572, 0.535051946721835, 0.731954774453526};
-    f64 theta = 36.762428160542513 * PI / 180.;
-    start = high_resolution_clock::now();
-    e.PRPtoEP(lambda, theta);
-    end = high_resolution_clock::now();
-    dur = duration_cast<microseconds>(end - start);
-    std::cout << "From PRP   : " << std::endl << e.EP << std::endl;
-    std::cout << "Elapsed time: " << dur.count() * 1e-6 << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
+        plt::show();
+    }
 
-    Vector3d rho = {0.140178867781743, 0.177793270216625, 0.243222426902823};
-    start = high_resolution_clock::now();
-    e.CRPtoEP(rho);
-    end = high_resolution_clock::now();
-    dur = duration_cast<microseconds>(end - start);
-    std::cout << "From CRP   : " << std::endl << e.EP << std::endl;
-    std::cout << "Elapsed time: " << dur.count() * 1e-6 << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
-
-    Vector3d sigma = {0.068254626885796, 0.086569491632188, 0.118427665034059};
-    start = high_resolution_clock::now();
-    e.MRPtoEP(sigma);
-    end = high_resolution_clock::now();
-    dur = duration_cast<microseconds>(end - start);
-    std::cout << "From MRP   : " << std::endl << e.EP << std::endl;
-    std::cout << "Elapsed time: " << dur.count() * 1e-6 << std::endl;
-    std::cout << " ----------------------------- " << std::endl;
-
-    Attitude x({1, 2, 3, 4});
-    std::cout << x.EP << std::endl;
     return 0;
 }

@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/Attitude.cpp.o -c /home/joseph/code/astrolib/src/Attitude.cpp",
+  "file": "/home/joseph/code/astrolib/src/Attitude.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/EOMS.cpp.o -c /home/joseph/code/astrolib/src/EOMS.cpp",
+  "file": "/home/joseph/code/astrolib/src/EOMS.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/Simulation.cpp.o -c /home/joseph/code/astrolib/src/Simulation.cpp",
+  "file": "/home/joseph/code/astrolib/src/Simulation.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DNOMINMAX -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/main.cpp.o -c /home/joseph/code/astrolib/src/main.cpp",
+  "file": "/home/joseph/code/astrolib/src/main.cpp"
+}
+]

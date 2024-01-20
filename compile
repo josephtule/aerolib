@@ -1,1 +1,1 @@
-g++ src/main2.cpp src/Attitude.cpp src/EOMS.cpp src/Simulation.cpp -ffast-math -mfma -march=native -O3; time ./a.out 10000 combined save
+g++ src/main2.cpp src/Attitude.cpp src/EOMS.cpp src/Simulation.cpp -ffast-math -mfma -march=native -O3 -I/usr/include/python3.10  -lpython3.10; time ./a.out 10000 combined save

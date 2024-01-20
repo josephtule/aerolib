@@ -1,5 +1,4 @@
 #include "Attitude.h"
-#include <eigen3/Eigen/src/Core/Matrix.h>
 
 Matrix3d rot(f64 angle, u8 axis);
 

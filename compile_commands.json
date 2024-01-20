@@ -1,0 +1,232 @@
+[
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++  -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/Attitude.cpp.o -c /home/joseph/code/astrolib/src/Attitude.cpp",
+  "file": "/home/joseph/code/astrolib/src/Attitude.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++  -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/EOMS.cpp.o -c /home/joseph/code/astrolib/src/EOMS.cpp",
+  "file": "/home/joseph/code/astrolib/src/EOMS.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++  -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/Simulation.cpp.o -c /home/joseph/code/astrolib/src/Simulation.cpp",
+  "file": "/home/joseph/code/astrolib/src/Simulation.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build",
+  "command": "/usr/bin/c++  -I/home/joseph/code/astrolib/include -std=gnu++17 -o CMakeFiles/a.out.dir/src/main.cpp.o -c /home/joseph/code/astrolib/src/main.cpp",
+  "file": "/home/joseph/code/astrolib/src/main.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/3rd_party",
+  "command": "/usr/bin/c++ -D_USE_MATH_DEFINES -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -fvisibility=hidden -std=gnu++17 -o CMakeFiles/nodesoup.dir/nodesoup/src/algebra.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/algebra.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/algebra.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/3rd_party",
+  "command": "/usr/bin/c++ -D_USE_MATH_DEFINES -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -fvisibility=hidden -std=gnu++17 -o CMakeFiles/nodesoup.dir/nodesoup/src/fruchterman_reingold.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/fruchterman_reingold.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/fruchterman_reingold.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/3rd_party",
+  "command": "/usr/bin/c++ -D_USE_MATH_DEFINES -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -fvisibility=hidden -std=gnu++17 -o CMakeFiles/nodesoup.dir/nodesoup/src/kamada_kawai.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/kamada_kawai.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/kamada_kawai.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/3rd_party",
+  "command": "/usr/bin/c++ -D_USE_MATH_DEFINES -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -fvisibility=hidden -std=gnu++17 -o CMakeFiles/nodesoup.dir/nodesoup/src/layout.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/layout.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/layout.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/3rd_party",
+  "command": "/usr/bin/c++ -D_USE_MATH_DEFINES -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -fvisibility=hidden -std=gnu++17 -o CMakeFiles/nodesoup.dir/nodesoup/src/nodesoup.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/nodesoup.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/src/nodesoup.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/backend/backend_interface.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/backend_interface.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/backend_interface.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/backend/gnuplot.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/gnuplot.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/gnuplot.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/backend/backend_registry.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/backend_registry.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/backend/backend_registry.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/axes_type.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axes_type.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axes_type.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/axes_object.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axes_object.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axes_object.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/axis_type.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axis_type.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/axis_type.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/figure_type.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/figure_type.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/figure_type.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/figure_registry.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/figure_registry.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/figure_registry.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/legend.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/legend.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/legend.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/core/line_spec.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/core/line_spec.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/core/line_spec.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/colors.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/colors.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/colors.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/common.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/common.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/common.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/contourc.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/contourc.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/contourc.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/popen.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/popen.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/popen.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/world_cities.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_cities.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_cities.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/world_map_10m.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_10m.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_10m.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/world_map_50m.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_50m.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_50m.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/util/world_map_110m.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_110m.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/util/world_map_110m.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/bars.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/bars.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/bars.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/box_chart.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/box_chart.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/box_chart.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/circles.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/circles.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/circles.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/contours.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/contours.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/contours.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/error_bar.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/error_bar.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/error_bar.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/filled_area.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/filled_area.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/filled_area.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/function_line.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/function_line.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/function_line.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/histogram.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/histogram.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/histogram.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/labels.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/labels.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/labels.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/line.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/line.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/line.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/matrix.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/matrix.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/matrix.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/network.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/network.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/network.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/parallel_lines.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/parallel_lines.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/parallel_lines.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/stair.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/stair.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/stair.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/string_function.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/string_function.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/string_function.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/surface.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/surface.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/surface.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/axes_objects/vectors.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/vectors.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/axes_objects/vectors.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/freestanding/axes_functions.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/freestanding/axes_functions.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/freestanding/axes_functions.cpp"
+},
+{
+  "directory": "/home/joseph/code/astrolib/build/matplotplusplus/source/matplot",
+  "command": "/usr/bin/c++ -DMATPLOT_BUILD_HIGH_RESOLUTION_WORLD_MAP -DMATPLOT_HAS_FBUFSIZE -DNOMINMAX -Dcimg_display=0 -Dcimg_use_blas -Dcimg_use_lapack -I/home/joseph/code/astrolib/include -I/home/joseph/code/astrolib/matplotplusplus/source -I/home/joseph/code/astrolib/build/matplotplusplus/source/matplot -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/cimg -isystem /home/joseph/code/astrolib/matplotplusplus/source/3rd_party/nodesoup/include -std=gnu++17 -o CMakeFiles/matplot.dir/freestanding/histcounts.cpp.o -c /home/joseph/code/astrolib/matplotplusplus/source/matplot/freestanding/histcounts.cpp",
+  "file": "/home/joseph/code/astrolib/matplotplusplus/source/matplot/freestanding/histcounts.cpp"
+}
+]
